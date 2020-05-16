@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -5,8 +7,6 @@
  */
 
 require("./bootstrap");
-
-window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,8 +20,8 @@ window.Vue = require("vue");
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component(
-    "example-component",
-    require("./components/ExampleComponent.vue").default
+  "example-component",
+  require("./components/ExampleComponent.vue").default
 );
 
 /**
@@ -30,6 +30,7 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// eslint-disable-next-line
 const app = new Vue({
-    el: "#app"
+  el: "#app",
 });

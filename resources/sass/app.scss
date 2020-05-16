@@ -1,1 +1,19 @@
-//
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@font-face {
+  font-family: "v";
+  src: url("../fonts/VendettaLight.otf") format("opentype"),
+    url("../fonts/VendettaLight.ttf") format("truetype"),
+    url("../fonts/VendettaLight.woff") format("woff2"),
+    url("../fonts/VendettaLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+html {
+  font-family: "v";
+}

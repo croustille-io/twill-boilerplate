@@ -1,15 +1,49 @@
-const mix = require('laravel-mix');
+const glob = require("glob");
+const mix = require("laravel-mix");
+const StyleLintPlugin = require("stylelint-webpack-plugin");
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
+require("laravel-mix-eslint");
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+let cssFiles = glob.sync("resources/sass/**/*.scss");
+
+mix
+  .setPublicPath("public/dist")
+  .setResourceRoot("/dist")
+  .options({
+    clearConsole: true,
+    cssNano: true,
+    postCss: [require(`tailwindcss`), require(`rucksack-css`)],
+    // processCssUrls: false,
+    purifyCss: {
+      paths: cssFiles, // .concat(["node_modules/.../style.css"])
+    },
+  })
+  .webpackConfig({
+    plugins: [
+      new StyleLintPlugin({
+        files: "./resources/sass/**/*.scss",
+      }),
+    ],
+  })
+  .eslint({
+    fix: true,
+  })
+  .browserSync({
+    proxy: "example.test",
+    // snippetOptions: {
+    //   rule: {
+    //     match: /<\/head>/i,
+    //     fn: function (snippet, match) {
+    //       return snippet + match;
+    //     },
+    //   },
+    // },
+  })
+  .js("resources/js/app.js", "js")
+  .js("resources/js/head.js", "js")
+  .sass("resources/sass/app.scss", "css")
+  // .copyDirectory("resources/fonts", "public/dist/fonts")
+  .copyDirectory("resources/images", "public/dist/images")
+  .sourceMaps()
+  .extract()
+  .version();
