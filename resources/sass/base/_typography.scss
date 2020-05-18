@@ -1,0 +1,56 @@
+html {
+  font-size: responsive 16px 24px;
+  font-range: theme("screens.sm") theme("screens.xl");
+  line-height: var(--line-height);
+  color: var(--color-text);
+}
+
+body {
+  font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-sans font-normal text-base m-0 leading-none;
+}
+
+p {
+  margin: 0;
+}
+
+p:not(:first-child) {
+  margin: calc(1em * var(--line-height, 1)) 0 0;
+}
+
+a {
+  color: blue;
+  text-decoration-skip-ink: auto;
+  transition: color var(--duration) var(--timing);
+
+  &:hover {
+    color: red;
+  }
+
+  &:focus {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+}
+
+hr {
+  border-bottom: var(--border);
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  margin: 1em 0;
+}
+
+address {
+  font-style: normal;
+  font-weight: inherit;
+  font-family: inherit;
+}

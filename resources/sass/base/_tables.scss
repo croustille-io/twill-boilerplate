@@ -1,0 +1,28 @@
+table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  table-layout: fixed;
+  text-align: left;
+  width: 100%;
+}
+
+thead {
+  vertical-align: bottom;
+}
+
+tbody {
+  vertical-align: top;
+}
+
+tr {
+  border-bottom: var(--border);
+}
+
+th {
+  @apply font-bold;
+}
+
+th,
+td {
+  padding: 1em 1em 1em 0;
+}

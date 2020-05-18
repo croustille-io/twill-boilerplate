@@ -4,6 +4,8 @@ const StyleLintPlugin = require("stylelint-webpack-plugin");
 
 require("laravel-mix-eslint");
 
+const proxy = "croustille.test";
+
 let cssFiles = glob.sync("resources/sass/**/*.scss");
 
 mix
@@ -13,7 +15,7 @@ mix
     clearConsole: true,
     cssNano: true,
     postCss: [require(`tailwindcss`), require(`rucksack-css`)],
-    // processCssUrls: false,
+    processCssUrls: false,
     purifyCss: {
       paths: cssFiles, // .concat(["node_modules/.../style.css"])
     },
@@ -29,7 +31,7 @@ mix
     fix: true,
   })
   .browserSync({
-    proxy: "example.test",
+    proxy,
     // snippetOptions: {
     //   rule: {
     //     match: /<\/head>/i,

@@ -1,19 +1,13 @@
+@import "./abstracts/variables";
+@import "./abstracts/fonts";
 @import "tailwindcss/base";
-
+@import "./base/buttons";
+@import "./base/forms";
+@import "./base/lists";
+@import "./base/tables";
+@import "./base/media";
+@import "./base/layout";
+@import "./base/typography";
 @import "tailwindcss/components";
-
+@import "./abstracts/utilities";
 @import "tailwindcss/utilities";
-
-@font-face {
-  font-family: "v";
-  src: url("../fonts/VendettaLight.otf") format("opentype"),
-    url("../fonts/VendettaLight.ttf") format("truetype"),
-    url("../fonts/VendettaLight.woff") format("woff2"),
-    url("../fonts/VendettaLight.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-}
-
-html {
-  font-family: "v";
-}

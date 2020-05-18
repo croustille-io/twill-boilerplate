@@ -1,0 +1,23 @@
+ip: 10.10.10.13
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+  - ~/.ssh/id_rsa
+folders:
+  - map: ~/code/twill-boilerplate
+    to: /home/vagrant/code
+sites:
+  - map: croustille.test
+    to: /home/vagrant/code/public
+  - map: admin.croustille.test
+    to: /home/vagrant/code/public
+databases:
+  - homestead
+features:
+  - mariadb: false
+  - ohmyzsh: false
+  - webdriver: false
+name: croustille
+hostname: croustille
