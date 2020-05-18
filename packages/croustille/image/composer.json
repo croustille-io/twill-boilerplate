@@ -1,0 +1,26 @@
+{
+    "name": "croustille/image",
+    "authors": [
+        {
+            "name": "Patrick Vézina",
+            "email": "patrick@croustille.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Croustille\\Image\\ImageServiceProvider"
+            ],
+            "aliases": {
+                "CroustilleImage": "Croustille\\Image\\ImageFacade"
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Croustille\\Image\\": "src/"
+        }
+    }
+}
