@@ -2,16 +2,16 @@
 
 return [
 
+    'pages' => [
+        'title' => 'Pages',
+        'module' => true
+    ],
+
     'settings' => [
-        'title' => 'Global',
+        'title' => 'Settings',
         'route' => 'admin.settings',
-        'params' => ['section' => 'global'],
+        'params' => ['section' => 'seo'],
         'primary_navigation' => [
-            'global' => [
-                'title' => 'Global',
-                'route' => 'admin.settings',
-                'params' => ['section' => 'global']
-            ],
             'seo' => [
                 'title' => 'SEO',
                 'route' => 'admin.settings',

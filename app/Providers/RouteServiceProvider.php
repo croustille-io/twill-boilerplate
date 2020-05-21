@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Models\Page;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -30,7 +31,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::bind('slug', function ($slug) {
+            if (Route::currentRouteName() === 'page.show') {
+                return Page::forSlug($slug)->first() ?? abort(404);
+            }
+
+            return $slug;
+        });
 
         parent::boot();
     }

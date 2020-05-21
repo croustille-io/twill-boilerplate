@@ -14,6 +14,7 @@
         @include('site.partials.footer')
 
         {!! gtag() !!}
+
         <script src="{{ mix('/js/manifest.js', '/dist') }}"></script>
         <script src="{{ mix('/js/vendor.js', '/dist') }}"></script>
         <script src="{{ mix('/js/app.js', '/dist') }}"></script>

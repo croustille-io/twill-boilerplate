@@ -18,6 +18,7 @@ return [
 
     'roles' => [
         'site_preview_image' => 'generic_image',
+        'preview_image' => 'generic_image',
     ],
 
 ];

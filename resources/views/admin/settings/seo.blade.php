@@ -2,11 +2,12 @@
 
 @section('contentFields')
     @formField('input', [
-        'label' => 'Site description',
         'name' => 'site_description',
+        'label' => 'Site description',
         'type' => 'textarea',
         'maxlength' => 300,
-        'rows' => 3
+        'rows' => 3,
+        'translated' => true,
     ])
 
     @formField('medias', [

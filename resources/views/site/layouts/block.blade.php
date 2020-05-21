@@ -2,6 +2,9 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css', '/dist') }}" />
+        <script>
+            window.CROUSTILLE = window.CROUSTILLE || {};
+        </script>
     </head>
     <body>
         <div id="app">

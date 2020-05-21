@@ -1,1 +1,1 @@
-<footer>&copy; Croustille</footer>
+<footer>{!! $footer->copyright !!}</footer>
