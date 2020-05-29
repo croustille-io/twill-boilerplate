@@ -1,1 +1,1 @@
-<footer>{!! $footer->copyright !!}</footer>
+{{-- <footer></footer> --}}

@@ -1,0 +1,36 @@
+%lists {
+  ul,
+  ol {
+    margin-top: var(--spacing-paragraph);
+  }
+
+  ul li::before {
+    content: "–";
+    margin-right: 1ch;
+  }
+
+  ol {
+    counter-reset: ol-list;
+  }
+
+  ol li {
+    counter-increment: ol-list;
+
+    &::before {
+      content: counter(ol-list) ".";
+      margin-right: 1ch;
+    }
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    margin: 0;
+  }
+
+  dd {
+    margin: 0;
+  }
+}

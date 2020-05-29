@@ -1,6 +1,6 @@
+@import "tailwindcss/base";
 @import "./abstracts/variables";
 @import "./abstracts/fonts";
-@import "tailwindcss/base";
 @import "./base/buttons";
 @import "./base/forms";
 @import "./base/lists";
@@ -8,6 +8,8 @@
 @import "./base/media";
 @import "./base/layout";
 @import "./base/typography";
+
 @import "tailwindcss/components";
-@import "./abstracts/utilities";
+
 @import "tailwindcss/utilities";
+@import "./abstracts/utilities";

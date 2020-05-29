@@ -1,4 +1,9 @@
-import debounce from "lodash/debounce"
+import debounce from "lodash/debounce";
+
+const camelToSnake = (str) =>
+  str
+    .replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
+    .replace(/^-+|-+$/g, "");
 
 /**
  * CroustilleElement API
@@ -32,39 +37,40 @@ import debounce from "lodash/debounce"
  */
 
 class CroustilleElement extends HTMLElement {
+  constructor() {
+    super();
+    this.namespace = camelToSnake(this.constructor.name);
+  }
+
   connectedCallback() {
-    this.node = this
-    this._debouncedResizeCallback = debounce(this._resize, 100).bind(this)
+    this.node = this;
+    this._debouncedResizeCallback = debounce(this._resize, 100).bind(this);
 
-    if (typeof this.namespace === "undefined") {
-      throw new Error("Déclarez this.namespace dans le constructor")
-    }
-
-    window.addEventListener("resize", this._debouncedResizeCallback)
-    this.init()
+    window.addEventListener("resize", this._debouncedResizeCallback);
+    this.init();
   }
 
   disconnectedCallback() {
-    window.addEventListener("resize", this._debouncedResizeCallback)
-    this.destroy()
+    window.addEventListener("resize", this._debouncedResizeCallback);
+    this.destroy();
   }
 
   // private methods
 
   _resize() {
-    this.resized()
+    this.resized();
   }
 
   // public methods
 
   children(str, ctx) {
-    const context = ctx || this.node
-    return context.querySelectorAll(`[data-${this.namespace}-${str}]`)
+    const context = ctx || this.node;
+    return context.querySelectorAll(`[data-${this.namespace}-${str}]`);
   }
 
   child(str, ctx) {
-    const context = ctx || this.node
-    return context.querySelector(`[data-${this.namespace}-${str}]`)
+    const context = ctx || this.node;
+    return context.querySelector(`[data-${this.namespace}-${str}]`);
   }
 
   // lifecycle methods
@@ -76,4 +82,4 @@ class CroustilleElement extends HTMLElement {
   resized() {}
 }
 
-export default CroustilleElement
+export default CroustilleElement;

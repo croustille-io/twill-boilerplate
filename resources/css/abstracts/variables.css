@@ -1,29 +1,29 @@
 :root {
-  // Colors
+  /* Colors */
   --color-text: black;
   --color-text--contrast: white;
 
-  // Line heights
+  /* Line heights */
   --line-height: 1.4;
 
-  // Other Sizes
+  /* Other Sizes */
   --border-radius: 0.1875rem;
   --spacing: 1.5rem;
   --spacing--small: 0.75rem;
 
-  // Borders
+  /* Borders */
   --border-width: 0.0625rem;
   --border: var(--border-width) solid currentColor;
 
-  // Focus
+  /* Focus */
   --focus-outline-width: 0.1875rem;
   --focus-outline-offset: 0.125rem;
   --focus-outline: var(--focus-outline-width) solid currentColor;
 
-  // Animations
+  /* Animations */
   --duration: 150ms;
   --timing: ease;
 
-  // Spacing
+  /* Spacing */
   --spacing-paragraph: calc(1em * var(--line-height, 1));
 }
