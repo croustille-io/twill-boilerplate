@@ -1,0 +1,63 @@
+@layer components {
+  .text-body-base {
+    & p {
+      margin-top: calc(var(--line-height, 1) * 1em);
+    }
+
+    & a {
+      @apply underline-offset;
+    }
+  }
+
+  .text-body {
+    @extend .text-body-base;
+
+    & h1,
+    & h2,
+    & h3 {
+      @apply m-0;
+    }
+
+    & > ul li,
+    & > ol li {
+      margin-top: 0.75rem;
+      padding-left: 2.75rem;
+      position: relative;
+    }
+
+    & > ul li::before {
+      & {
+        content: '•';
+        display: inline-block;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 2.75rem;
+      }
+    }
+
+    & > ol {
+      counter-reset: ol-list;
+    }
+
+    & > ol li {
+      counter-increment: ol-list;
+
+      &::before {
+        content: counter(ol-list) '.';
+        display: inline-block;
+        left: 0;
+        position: absolute;
+        text-align: right;
+        width: 1.75rem;
+      }
+    }
+  }
+
+  .underline-offset {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.125em;
+  }
+}

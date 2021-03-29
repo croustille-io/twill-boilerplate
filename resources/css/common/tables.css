@@ -15,7 +15,8 @@ tbody {
 }
 
 tr {
-  border-bottom: var(--border);
+  font-weight: inherit;
+  text-align: inherit;
 }
 
 th {

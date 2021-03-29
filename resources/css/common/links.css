@@ -1,0 +1,25 @@
+@layer base {
+  a[data-focus-method='key']:focus {
+    @apply focus:outline-none focus:ring;
+  }
+}
+
+@layer components {
+  .link {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.125em;
+    transition: text-decoration-color var(--duration) var(--timing);
+
+    &:hover {
+      text-decoration-color: transparent;
+    }
+  }
+
+  .link-underline {
+    & a {
+      @apply link;
+    }
+  }
+}

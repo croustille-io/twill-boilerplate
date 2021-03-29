@@ -1,0 +1,12 @@
+@layer components {
+  .container {
+    width: auto;
+    margin-left: var(--outer-gutter);
+    margin-right: var(--outer-gutter);
+  }
+
+  .no-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

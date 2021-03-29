@@ -1,15 +1,31 @@
-@import "tailwindcss/base";
-@import "./abstracts/variables";
-@import "./abstracts/fonts";
-@import "./base/buttons";
-@import "./base/forms";
-@import "./base/lists";
-@import "./base/tables";
-@import "./base/media";
-@import "./base/layout";
-@import "./base/typography";
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@import 'tailwindcss/base';
 
-@import "tailwindcss/components";
+@import './abstracts/variables';
+@import './abstracts/utilities';
+@import './abstracts/fonts';
 
-@import "tailwindcss/utilities";
-@import "./abstracts/utilities";
+@import './common/base.css';
+@import './common/buttons.css';
+@import './common/container.css';
+@import './common/layout.css';
+@import './common/links.css';
+@import './common/media.css';
+@import './common/tables.css';
+@import './common/text-body.css';
+@import './common/typography.css';
+
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+@import 'tailwindcss/components';
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+@import 'tailwindcss/utilities';

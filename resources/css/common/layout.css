@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  background-color: white;
+  box-sizing: border-box;
+  font-range: theme('screens.sm') theme('screens.2xl');
+  font-size: responsive 16px 32px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body {
+  @extend %font-smoothing;
+  @apply font-sans text-black bg-white;
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: 'kern' on;
+  font-kerning: normal;
+  font-size: 100%;
+  font-variant-ligatures: common-ligatures;
+  line-height: 1;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100vw;
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
