@@ -1,19 +1,18 @@
-import debounce from "lodash/debounce";
-
-const camelToSnake = (str) =>
-  str
-    .replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`)
-    .replace(/^-+|-+$/g, "");
+import debounce from 'lodash/debounce'
+import { camelToSnake } from './camelToSnake'
 
 /**
- * CroustilleElement API
+ * CroustilleElement
  *
  * Exemple:
  *
  * class Nav extends CroustilleElement {
- *   init() {},
- *   resized() {},
- *   destroy() {},
+ *   constructor() {
+ *     super("nav")
+ *   }
+ *   init() {}
+ *   resized() {}
+ *   destroy() {}
  *   ...
  * }
  *
@@ -37,40 +36,55 @@ const camelToSnake = (str) =>
  */
 
 class CroustilleElement extends HTMLElement {
-  constructor() {
-    super();
-    this.namespace = camelToSnake(this.constructor.name);
+  constructor(namespace) {
+    const self = super()
+
+    if (!namespace) {
+      throw new Error(
+        `Provide a namespace in constuctor: super("${camelToSnake(
+          self.constructor.name
+        )}")`
+      )
+    }
+
+    self.namespace = namespace || camelToSnake(self.constructor.name)
+    self._debouncedResizeCallback = debounce(self._resize, 100).bind(this)
+    self._resized = this.resized.bind(this)
+    self.node = self
+    window.addEventListener('resize', self._debouncedResizeCallback)
+
+    return self
   }
 
   connectedCallback() {
-    this.node = this;
-    this._debouncedResizeCallback = debounce(this._resize, 100).bind(this);
-
-    window.addEventListener("resize", this._debouncedResizeCallback);
-    this.init();
+    this.init()
   }
 
   disconnectedCallback() {
-    window.addEventListener("resize", this._debouncedResizeCallback);
-    this.destroy();
+    window.removeEventListener('resize', this._debouncedResizeCallback)
+    this.destroy()
   }
 
   // private methods
 
   _resize() {
-    this.resized();
+    this._resized()
   }
 
   // public methods
 
   children(str, ctx) {
-    const context = ctx || this.node;
-    return context.querySelectorAll(`[data-${this.namespace}-${str}]`);
+    const context = ctx || this
+    return context.querySelectorAll(this.childSelector(str))
   }
 
   child(str, ctx) {
-    const context = ctx || this.node;
-    return context.querySelector(`[data-${this.namespace}-${str}]`);
+    const context = ctx || this
+    return context.querySelector(this.childSelector(str))
+  }
+
+  childSelector(str) {
+    return `[data-${this.namespace}-${str}]`
   }
 
   // lifecycle methods
@@ -82,4 +96,4 @@ class CroustilleElement extends HTMLElement {
   resized() {}
 }
 
-export default CroustilleElement;
+export default CroustilleElement
