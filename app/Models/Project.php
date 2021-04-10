@@ -12,7 +12,7 @@ use A17\Twill\Models\Model;
 use \Mcamara\LaravelLocalization\Interfaces\LocalizedUrlRoutable;
 use App\Models\Traits\JsonField;
 
-class Page extends Model implements LocalizedUrlRoutable
+class Project extends Model implements LocalizedUrlRoutable
 {
     use HasBlocks, HasTranslation, HasSlug, HasMedias, HasFiles, HasRevisions;
     use JsonField;
@@ -21,7 +21,7 @@ class Page extends Model implements LocalizedUrlRoutable
         'published',
         'title',
         'description',
-        'content',
+        'content'
     ];
 
     public $translatedAttributes = [
@@ -34,16 +34,7 @@ class Page extends Model implements LocalizedUrlRoutable
         'title',
     ];
 
-    public $mediasParams = [
-        'preview_image' => [
-            'default' => [
-                [
-                    'name' => 'default',
-                    'ratio' => 0,
-                ],
-            ],
-        ],
-    ];
+    public $mediasParams = [];
 
     public function getLocalizedRouteKey($locale)
     {
