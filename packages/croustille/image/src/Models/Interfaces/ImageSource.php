@@ -1,8 +1,8 @@
 <?php
 
-namespace Croustille\Image\Models;
+namespace Croustille\Image\Models\Interfaces;
 
-interface ImageSourceInterface
+interface ImageSource
 {
     public function width();
 

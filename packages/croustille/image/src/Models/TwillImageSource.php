@@ -4,9 +4,9 @@ namespace Croustille\Image\Models;
 
 use Exception;
 use A17\Twill\Models\Media;
-use Croustille\Image\Models\ImageSourceInterface;
+use Croustille\Image\Models\Interfaces\ImageSource;
 
-class TwillImageSource implements ImageSourceInterface
+class TwillImageSource implements ImageSource
 {
     protected $model;
 
@@ -99,7 +99,7 @@ class TwillImageSource implements ImageSourceInterface
 
     public function sizesAttr()
     {
-        return $this->profile['sizes'] ?? '100vw';
+        return $this->profile['sizes'] ?? null;
     }
 
     public function lqip()

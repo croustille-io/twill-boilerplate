@@ -7,7 +7,7 @@ return [
     'profiles' => [
         'generic_image' => [
             'default_width' => 989,
-            'sizes' => '100vw',
+            // 'sizes' => '100vw', // default to 100vw
             'sources' => [
                 [
                     'widths' => [989, 1299, 1519, 1919, 2599, 3038],

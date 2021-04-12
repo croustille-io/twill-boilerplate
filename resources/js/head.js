@@ -1,14 +1,14 @@
-import webpIsSupported from "./vendor/croustille/image/webpIsSupported";
+import { webpIsSupported } from './lib'
 
-const CROUSTILLE = window.CROUSTILLE || {};
+const CROUSTILLE = window.CROUSTILLE || {}
 
 const checkWebpSupport = async () => {
   if (await webpIsSupported()) {
-    console.log("webp is Supported");
-    CROUSTILLE.webp = true;
+    console.log('webp is Supported')
+    CROUSTILLE.webp = true
   } else {
-    console.log("webp isn't supported");
-    CROUSTILLE.webp = false;
+    console.log("webp isn't supported")
+    CROUSTILLE.webp = false
   }
-};
-checkWebpSupport();
+}
+checkWebpSupport()

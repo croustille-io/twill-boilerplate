@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Lazyload from './vendor/croustille/image/lazyload'
 import { setVH, focusDisplayHandler } from './lib'
+import { CroustilleImage } from '../../packages/croustille/image/src/js'
 
 require('./bootstrap')
 
@@ -17,8 +17,7 @@ const app = new Vue({
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const lazyloading = new Lazyload()
-  lazyloading.init()
+  const lazyloading = new CroustilleImage()
 
   window.addEventListener('resize', setVH)
   setVH()
