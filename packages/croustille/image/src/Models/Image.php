@@ -13,6 +13,8 @@ class Image
     protected $imgStyle;
     protected $sizes;
     protected $source;
+    protected $height;
+    protected $width;
 
     public function __construct(ImageSource $source, array $args = [])
     {
@@ -33,6 +35,9 @@ class Image
         $this->loading = $args['loading'] ?? 'lazy';
 
         $this->sizes = $args['sizes'] ?? $this->getSizes();
+
+        $this->width = $args['width'] ?? $this->source->width();
+        $this->height = $args['height'] ?? (isset($args['width']) ? $this->width / $this->source->width() * $this->source->height() : $this->source->height());
 
         $this->imgStyle = array_merge(
             [
@@ -59,11 +64,11 @@ class Image
             // If screen is wider than the max size, image width is the max size,
             // otherwise it's the width of the screen
             case 'constrained':
-                return '(min-width:'.$this->source->width().'px) '.$this->source->width().'px, 100vw';
+                return '(min-width:'.$this->width.'px) '.$this->width.'px, 100vw';
 
             // Image is always the same width, whatever the size of the screen
             case 'fixed':
-                return $this->source->width().'px';
+                return $this->width.'px';
 
             // Image is always the width of the screen
             case 'fullWidth':
@@ -190,15 +195,15 @@ class Image
     public function view()
     {
         $wrapper = $this->getWrapperProps(
-            $this->source->width(),
-            $this->source->height(),
+            $this->width,
+            $this->height,
             $this->layout
         );
         $placeholder = $this->getPlaceholderProps(
             $this->lqip ? $this->source->lqip() : false,
             $this->layout,
-            $this->source->width(),
-            $this->source->height(),
+            $this->width,
+            $this->height,
             $this->backgroundColor
         );
         $main = $this->getMainProps(
@@ -212,8 +217,8 @@ class Image
                 'wrapper' => $wrapper,
                 'placeholder' => $placeholder,
                 'main' => $main,
-                'width' => $this->source->width(),
-                'height' => $this->source->height(),
+                'width' => $this->width,
+                'height' => $this->height,
                 'alt' => $this->source->alt(),
                 'sizes' => $this->sizes ?? $this->source->sizesAttr(),
             ]
