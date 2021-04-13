@@ -1,12 +1,13 @@
 # Croustille Image
 
-Fluid-type image module for Twill.
+Image module for Twill.
 
--   `<picture>` with `<source>`
--   Twill's LQIP and background color image placeholder
--   Crops association with media query
--   WebP and JPEG support
--   Lazyload image and video with IntersectionOserver
+- `<picture>` with `<source>`
+- Twill's LQIP and background color image placeholder
+- Art direction
+- WebP and JPEG support
+- Lazyload (fade-in) image and video with IntersectionOserver
+- Support native lazyloading with `loading='lazy'
 
 ## Installation
 
@@ -20,34 +21,14 @@ Publish JavaScript assets for inclusion in frontend bundler.
 php artisan vendor:publish --provider="Croustille\Image\ImageServiceProvider" --tag=js
 ```
 
-Check for WebP support
-
-```js
-import webpIsSupported from "./vendor/croustille/image/webpIsSupported";
-
-const CROUSTILLE = window.CROUSTILLE || {};
-
-const checkWebpSupport = async () => {
-    if (await webpIsSupported()) {
-        console.log("webp is Supported");
-        CROUSTILLE.webp = true;
-    } else {
-        console.log("webp isn't supported");
-        CROUSTILLE.webp = false;
-    }
-};
-checkWebpSupport();
-```
-
 Init lazyloading
 
 ```js
-import Lazyload from "./vendor/image/lazyload";
+import { CroustilleImage } from '../../packages/croustille/image/src/js'
 
-document.addEventListener("DOMContentLoaded", function () {
-    const lazyloading = new Lazyload();
-    lazyloading.init();
-});
+document.addEventListener('DOMContentLoaded', function () {
+  const lazyloading = new CroustilleImage()
+})
 ```
 
 ## Config
@@ -95,7 +76,7 @@ return [
     'profiles' => [
         'generic_image' => [
             'default_width' => 989,
-            'sizes' => '(max-width: 767px) 100vw, 50vw',
+            'sizes' => '(max-width: 767px) 100vw, 50vw', // default '100vw'
             'sources' => [
                 [
                     'crop' => 'mobile',
@@ -120,18 +101,12 @@ return [
 
 ## Usage
 
-In you Blade templates:
-
 ```php
-{!! CroustilleImage::image($block, 'site_preview_image') !!}
+{!! CroustilleImage::fullWidth($block, 'site_preview_image') !!}
+{!! CroustilleImage::constrained($block, 'site_preview_image', ['width' => 1000]) !!}
+{!! CroustilleImage::fixed($block, 'site_preview_image', ['width' => 400]) !!}
 ```
-
-# Video lazyloading
-
-...
 
 ## TODO
 
--   Styles for different placeholder ratios
--   MutationObserver on new image/video
--   fix weird webp detection
+- Art direction placeholder (with picture/source/img)
