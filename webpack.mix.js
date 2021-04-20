@@ -15,7 +15,7 @@ mix
   .setPublicPath('public/dist')
   .setResourceRoot('/dist')
   .browserSync({
-    proxy: 'davidtomas.test',
+    proxy: 'boilerplate.test',
     snippetOptions: {
       rule: {
         match: /<\/head>/i,
