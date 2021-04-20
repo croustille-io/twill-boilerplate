@@ -15,6 +15,12 @@ Image module for Twill.
 composer require croustille/image
 ```
 
+Publish `config/images.php`.
+
+```bash
+php artisan vendor:publish --provider="Croustille\Image\ImageServiceProvider" --tag=config
+```
+
 Publish JavaScript assets for inclusion in frontend bundler.
 
 ```bash
@@ -102,9 +108,9 @@ return [
 ## Usage
 
 ```php
-{!! CroustilleImage::fullWidth($block, 'site_preview_image') !!}
-{!! CroustilleImage::constrained($block, 'site_preview_image', ['width' => 1000]) !!}
-{!! CroustilleImage::fixed($block, 'site_preview_image', ['width' => 400]) !!}
+{!! CroustilleImage::fullWidth($block, 'preview_image') !!}
+{!! CroustilleImage::constrained($block, 'preview_image', ['width' => 1000]) !!}
+{!! CroustilleImage::fixed($block, 'preview_image', ['width' => 400]) !!}
 ```
 
 ## TODO
