@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { setVH, focusDisplayHandler } from './lib'
-import { CroustilleImage } from '../../packages/croustille/image/src/js'
+import { TwillImage } from '../../vendor/croustille/twill-image'
 
 require('./bootstrap')
 
@@ -17,7 +17,7 @@ const app = new Vue({
 })
 
 document.addEventListener('DOMContentLoaded', function () {
-  const lazyloading = new CroustilleImage()
+  const lazyloading = new TwillImage()
 
   window.addEventListener('resize', setVH)
   setVH()

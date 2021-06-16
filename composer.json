@@ -7,22 +7,11 @@
     "laravel"
   ],
   "license": "MIT",
-  "repositories": [
-    {
-      "type": "path",
-      "url": "packages/croustille/image",
-      "options": {
-        "versions": {
-          "croustille/image": "*"
-        }
-      }
-    }
-  ],
   "require": {
     "php": "^7.2.5",
     "area17/twill": "2.x-dev",
     "artesaos/seotools": "^0.17.2",
-    "croustille/image": "*",
+    "croustille/twill-image": "^0.2.6",
     "fideloper/proxy": "^4.2",
     "fruitcake/laravel-cors": "^1.0",
     "guzzlehttp/guzzle": "^6.3",

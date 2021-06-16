@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Croustille\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,9 +232,6 @@ return [
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         'JsonLd'   => Artesaos\SEOTools\Facades\JsonLd::class,
-
-        'CroustilleImage' => Croustille\Image\ImageFacade::class,
-
     ],
 
 ];
