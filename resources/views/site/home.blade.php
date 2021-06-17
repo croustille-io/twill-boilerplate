@@ -1,9 +1,11 @@
 @extends('site.layouts.app')
 
 @section('content')
-<h1>{{ $item->title }}</h1>
+    <h1>{{ $item->title }}</h1>
 
-{{-- <div class="w-1/2 mx-auto">
-    {!! TwillImage::fullWidth($item, 'preview_image') !!}
-</div> --}}
+    @if($item->hasImage('preview_image'))
+        <div class="w-1/2 mt-4">
+            {!! TwillImage::fullWidth($item, 'preview_image') !!}
+        </div>
+    @endif
 @stop
